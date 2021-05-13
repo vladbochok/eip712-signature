@@ -104,16 +104,18 @@ pub trait EIP712TypedStructure {
         builder.encode_data()
     }
 
+    fn type_hash(&self) -> H256 {
+        let encode_type = self.encode_type();
+        encode_type.keccak256().into()
+    }
+
     fn hash_struct(&self) -> H256 {
         // hashStruct(s : 𝕊) = keccak256(keccak256(encodeType(typeOf(s))) ‖ encodeData(s)).
-        let type_hash = {
-            let encode_type = self.encode_type();
-            encode_type.keccak256()
-        };
+        let type_hash = self.type_hash();
         let encode_data = self.encode_data();
 
         let mut bytes = Vec::new();
-        bytes.extend_from_slice(&type_hash);
+        bytes.extend_from_slice(&type_hash.as_bytes());
         for data in encode_data {
             bytes.extend_from_slice(&data.as_bytes());
         }
