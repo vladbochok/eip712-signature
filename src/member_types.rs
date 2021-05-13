@@ -1,6 +1,4 @@
-use crate::typed_structure::{
-    EncodedStructureMember, StructMember,
-};
+use crate::typed_structure::{EncodedStructureMember, StructMember};
 use parity_crypto::Keccak256;
 use web3::types::{Address, H256, U256};
 

@@ -1,9 +1,7 @@
 use parity_crypto::Keccak256;
 use web3::types::{Address, H256, U256};
 
-use crate::struct_builder::{
-    EncodeBuilder, StructBuilder, TypeBuilder,
-};
+use crate::struct_builder::{EncodeBuilder, StructBuilder, TypeBuilder};
 
 #[derive(Debug, Clone)]
 pub struct EncodedStructureMember {

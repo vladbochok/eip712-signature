@@ -1,9 +1,7 @@
 use std::collections::{BTreeMap, VecDeque};
 use web3::types::H256;
 
-use crate::typed_structure::{
-    EncodedStructureMember, StructMember,
-};
+use crate::typed_structure::{EncodedStructureMember, StructMember};
 
 /// Interface that collects members of the structure into the structure of the EIP-712 standard.
 pub trait StructBuilder {
