@@ -479,6 +479,7 @@ name = "eip712-signature"
 version = "0.1.0"
 dependencies = [
  "parity-crypto",
+ "thiserror",
  "web3",
 ]
 

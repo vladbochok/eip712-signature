@@ -9,3 +9,4 @@ edition = "2018"
 [dependencies]
 web3 = "0.13.0"
 parity-crypto = {version = "0.6.2", features = ["publickey"] }
+thiserror = "1.0"

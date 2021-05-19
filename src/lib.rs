@@ -3,9 +3,11 @@
 //! This module contains the necessary interfaces for obtaining a hash of the structure, which is later needed for EIP-712 signing.
 
 mod member_types;
+pub mod packed_signature;
 pub mod struct_builder;
 pub mod typed_structure;
 
+pub use packed_signature::*;
 pub use struct_builder::*;
 pub use typed_structure::*;
 

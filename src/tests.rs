@@ -1,7 +1,9 @@
 use crate::{
     struct_builder::StructBuilder,
     typed_structure::{EIP712TypedStructure, Eip712Domain},
+    PackedEthSignature,
 };
+use parity_crypto::Keccak256;
 use std::str::FromStr;
 use web3::types::{Address, H256, U256};
 
@@ -101,5 +103,16 @@ fn test_encode_eip712_typed_struct() {
     assert_eq!(
         domain.hash_struct(),
         H256::from_str("f2cee375fa42b42143804025fc449deafd50cc031ca257e0b194a650a912090f").unwrap()
+    );
+
+    let private_key = b"cow".keccak256().into();
+    let address_owner = PackedEthSignature::address_from_private_key(&private_key).unwrap();
+
+    let signature = PackedEthSignature::sign_typed_data(&private_key, &domain, &message).unwrap();
+    let signed_bytes = PackedEthSignature::typed_data_to_signed_bytes(&domain, &message);
+
+    assert_eq!(
+        address_owner,
+        signature.signature_recover_signer(&signed_bytes).unwrap()
     );
 }
