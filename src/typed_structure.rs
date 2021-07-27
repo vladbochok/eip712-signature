@@ -137,12 +137,22 @@ pub struct Eip712Domain {
 }
 
 impl Eip712Domain {
-    pub fn new(name: String, version: String, verifying_contract: Address, chain_id: U256) -> Self {
+    /// Name of the protocol.
+    pub const NAME: &'static str = "zkSync";
+    /// Version of the protocol. While there may be `2.x` releases, the minor release version bump
+    /// should not be breaking, meaning that clients from the `2.x-1` version should be able to communicate
+    /// with zkSync server. Thus `VERSION` corresponds to the major version only.
+    pub const VERSION: &'static str = "2";
+
+    pub fn new(chain_id: U256) -> Self {
+        // Our contract doesn't verify EIP712 signatures.
+        let verifying_contract = Address::zero();
+
         Self {
-            name,
-            version,
+            name: Self::NAME.to_string(),
+            version: Self::VERSION.to_string(),
             verifying_contract,
-            chain_id: chain_id,
+            chain_id,
         }
     }
 }
