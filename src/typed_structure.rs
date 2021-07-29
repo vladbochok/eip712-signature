@@ -137,15 +137,12 @@ pub struct Eip712Domain {
 }
 
 impl Eip712Domain {
-    pub fn new(name: String, version: String, chain_id: U256) -> Self {
-        // Our contract doesn't verify EIP712 signatures.
-        let verifying_contract = Address::zero();
-
+    pub fn new(name: String, version: String, verifying_contract: Address, chain_id: U256) -> Self {
         Self {
             name,
             version,
-            verifying_contract,
             chain_id,
+            verifying_contract,
         }
     }
 }
