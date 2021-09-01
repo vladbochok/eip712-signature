@@ -11,8 +11,8 @@ pub use packed_signature::*;
 pub use struct_builder::*;
 pub use typed_structure::*;
 
+pub use ethereum_types;
 pub use parity_crypto;
-pub use web3;
 
 #[cfg(test)]
 mod tests;

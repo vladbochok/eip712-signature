@@ -1,6 +1,6 @@
 use crate::typed_structure::{EncodedStructureMember, StructMember};
+use ethereum_types::{Address, H256, U256};
 use parity_crypto::Keccak256;
-use web3::types::{Address, H256, U256};
 
 impl StructMember for String {
     const MEMBER_TYPE: &'static str = "string";

@@ -1,5 +1,5 @@
+use ethereum_types::H256;
 use std::collections::{BTreeMap, VecDeque};
-use web3::types::H256;
 
 use crate::typed_structure::{EncodedStructureMember, StructMember};
 

@@ -1,4 +1,5 @@
 use crate::typed_structure::{EIP712TypedStructure, Eip712Domain};
+use ethereum_types::{Address, H256};
 use parity_crypto::{
     publickey::{
         public_to_address, recover, sign, Error as ParityCryptoError, KeyPair,
@@ -7,7 +8,6 @@ use parity_crypto::{
     Keccak256,
 };
 use thiserror::Error;
-use web3::types::{Address, H256};
 
 /// Struct used for working with ethereum signatures created using eth_sign (using geth, ethers.js, etc)
 /// message is serialized as 65 bytes long `0x` prefixed string.

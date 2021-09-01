@@ -3,9 +3,9 @@ use crate::{
     typed_structure::{EIP712TypedStructure, Eip712Domain},
     PackedEthSignature,
 };
+use ethereum_types::{Address, H256, U256};
 use parity_crypto::Keccak256;
 use std::str::FromStr;
-use web3::types::{Address, H256, U256};
 
 #[derive(Clone)]
 struct Person {
